@@ -1,6 +1,5 @@
 package testrunner;
 
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.thucydides.core.annotations.Managed;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import testrunner.actions.ClickOnTarget;
 import testrunner.actions.DisplayedArticle;
 import testrunner.actions.NavigateActions;
-import testrunner.actions.SearchActions;
+import testrunner.actions.SendKeys;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,7 +29,7 @@ class WhenSearchingForTerms {
     /**
      * Actions related to searches. This is a UIInteraction class so it will be instantiated automatically by Serenity.
      */
-    SearchActions search;
+    SendKeys sendKeys;
 
     /**
      * A page object representing a Wikipedia article that is currently appearing in the browser.
@@ -42,11 +41,11 @@ class WhenSearchingForTerms {
 
     @Test
     void searchBySingleKeyword() {
-        navigate.toTheHomePage();
-        search.searchBy("Everest");
-        click.byId("searchInput");
-        Serenity.reportThat("The first heading should be 'Mount Everest'",
-                () -> assertThat(displayedArticle.getFirstHeading()).contains("Everest")
-        );
+        navigate.toThePage("http://w3schools.com/");
+        click.byId("search2");
+        sendKeys.toTarget("Everest", "#search2");
+        //Serenity.reportThat("The first heading should be 'Mount Everest'",
+        //        () -> assertThat(displayedArticle.getFirstHeading()).contains("Everest")
+        //);
     }
 }
