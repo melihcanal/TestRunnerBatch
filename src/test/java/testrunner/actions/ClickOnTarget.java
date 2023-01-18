@@ -14,7 +14,7 @@ public class ClickOnTarget extends UIInteractions {
     }
 
     @Step("Click on target by id '{0}'")
-    public void xpathOrCssSelector(String xpathOrCssSelector) {
+    public void byXpathOrCssSelector(String xpathOrCssSelector) {
         $(xpathOrCssSelector).click();
     }
 }

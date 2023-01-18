@@ -1,0 +1,20 @@
+[
+  {
+    "actionType": "CLICK",
+    "xpathOrCssSelector": "#search2"
+  },
+  {
+    "actionType": "SEND_KEYS",
+    "xpathOrCssSelector": "#search2",
+    "keyword": "Mike"
+  },
+  {
+    "actionType": "GO_TO_URL",
+    "url": "http://w3schools.com/"
+  },
+  {
+    "actionType": "ASSERT_EQUALS",
+    "message": "The first heading should be 'No Mikey No'",
+    "expected": "Mike"
+  }
+]
