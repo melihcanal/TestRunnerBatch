@@ -2,6 +2,7 @@ package testrunner;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.thucydides.core.annotations.Managed;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +10,6 @@ import testrunner.actions.ClickOnTarget;
 import testrunner.actions.DisplayedArticle;
 import testrunner.actions.NavigateActions;
 import testrunner.actions.SendKeys;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 class WhenSearchingForTerms {
@@ -38,6 +37,11 @@ class WhenSearchingForTerms {
     DisplayedArticle displayedArticle;
 
     ClickOnTarget click;
+
+    @BeforeAll
+    static void getTestSteps() {
+
+    }
 
     @Test
     void searchBySingleKeyword() {
