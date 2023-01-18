@@ -10,11 +10,11 @@ public class DisplayedPage extends PageComponent {
 
     private WebElementFacade webElementFacade;
 
-    public String findElement(String xpathOrCssSelector) {
+    public String getElementText(String xpathOrCssSelector) {
         return find(xpathOrCssSelector).getText();
     }
 
-    public List<String> findAllElements(String xpathOrCssSelector) {
+    public List<String> getAllElementsText(String xpathOrCssSelector) {
         return findAll(xpathOrCssSelector).stream()
                 .map(WebElementFacade::getText)
                 .collect(Collectors.toList());

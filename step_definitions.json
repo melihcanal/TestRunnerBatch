@@ -14,7 +14,8 @@
   },
   {
     "actionType": "ASSERT_EQUALS",
-    "message": "The first heading should be 'No Mikey No'",
-    "expected": "Mike"
+    "message": "The first heading should be 'With the world's largest web developer site.'",
+    "expected": "With the world's largest web developer site.",
+    "xpathOrCssSelector": "//*[@id='main']/div[1]/div/h3"
   }
 ]

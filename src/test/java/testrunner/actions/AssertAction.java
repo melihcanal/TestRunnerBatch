@@ -11,7 +11,7 @@ public class AssertAction extends UIInteractions {
     DisplayedPage displayedPage;
 
     public void assertEquals(String message, Object expected, String xpathOrCssSelector) {
-        Serenity.reportThat(message, () -> Assertions.assertEquals(String.valueOf(expected), displayedPage.findElement((xpathOrCssSelector))));
+        Serenity.reportThat(message, () -> Assertions.assertEquals(String.valueOf(expected), displayedPage.getElementText((xpathOrCssSelector))));
     }
 
     public void assertThat(StepDefinition stepDefinition) {

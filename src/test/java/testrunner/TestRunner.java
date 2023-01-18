@@ -32,6 +32,8 @@ class TestRunner {
 
     AssertAction assertAction;
 
+    MoveToElement move;
+
     static List<StepDefinition> stepDefinitions;
 
     @BeforeAll
@@ -51,9 +53,8 @@ class TestRunner {
             } else if (stepDefinition.getActionType().equals(ActionType.GO_TO_URL)) {
                 navigate.toThePage(stepDefinition.getUrl());
             } else if (stepDefinition.getActionType().equals(ActionType.SCROLL)) {
-                // TODO:
+                move.byXpathOrCssSelector(stepDefinition.getXpathOrCssSelector());
             } else if (stepDefinition.getActionType().equals(ActionType.ASSERT_EQUALS)) {
-
                 assertAction.assertEquals(stepDefinition.getMessage(), stepDefinition.getExpected(), stepDefinition.getXpathOrCssSelector());
             } else if (stepDefinition.getActionType().equals(ActionType.ASSERT_THAT)) {
                 assertAction.assertThat(stepDefinition);
