@@ -13,6 +13,8 @@ public class StepDefinition {
     private String message;
     private String xpathOrCssSelector;
     private String keyword;
+    private Integer scrollLeft;
+    private Integer scrollTop;
     private String url;
     private Object expected;
 }

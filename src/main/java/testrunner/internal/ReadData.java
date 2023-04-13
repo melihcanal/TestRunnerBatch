@@ -13,7 +13,7 @@ public class ReadData {
 
     public static List<StepDefinition> readDataFromJson() {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("step_definitions.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("src/test/resources/step_definitions.json"));
             List<StepDefinition> steps = new Gson().fromJson(reader, new TypeToken<List<StepDefinition>>() {}.getType());
             reader.close();
             return steps;

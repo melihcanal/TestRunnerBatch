@@ -17,7 +17,7 @@ import java.util.List;
 @ExtendWith(SerenityJUnit5Extension.class)
 class TestRunner {
 
-    @Managed(driver = "chrome", options = "headless")
+    @Managed(driver = "chrome")
     WebDriver driver;
 
     DisplayedPage displayedArticle;
@@ -30,9 +30,11 @@ class TestRunner {
 
     ClickOnTarget click;
 
-    AssertAction assertAction;
+    Hover hover;
 
-    MoveToElement move;
+    Scroll scroll;
+
+    AssertAction assertAction;
 
     static List<StepDefinition> stepDefinitions;
 
@@ -50,10 +52,12 @@ class TestRunner {
                 sendKeys.toTarget(stepDefinition.getKeyword(), stepDefinition.getXpathOrCssSelector());
             } else if (stepDefinition.getActionType().equals(ActionType.SEARCH)) {
                 search.onTarget(stepDefinition.getKeyword(), stepDefinition.getXpathOrCssSelector());
+            } else if (stepDefinition.getActionType().equals(ActionType.HOVER)) {
+                hover.over(stepDefinition.getXpathOrCssSelector());
+            } else if (stepDefinition.getActionType().equals(ActionType.SCROLL)) {
+                scroll.windowTo(stepDefinition.getScrollLeft(), stepDefinition.getScrollTop());
             } else if (stepDefinition.getActionType().equals(ActionType.GO_TO_URL)) {
                 navigate.toThePage(stepDefinition.getUrl());
-            } else if (stepDefinition.getActionType().equals(ActionType.SCROLL)) {
-                move.byXpathOrCssSelector(stepDefinition.getXpathOrCssSelector());
             } else if (stepDefinition.getActionType().equals(ActionType.ASSERT_EQUALS)) {
                 assertAction.assertEquals(stepDefinition.getMessage(), stepDefinition.getExpected(), stepDefinition.getXpathOrCssSelector());
             } else if (stepDefinition.getActionType().equals(ActionType.ASSERT_THAT)) {
